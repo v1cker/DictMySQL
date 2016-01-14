@@ -89,10 +89,10 @@ mysql <span class="pl-k">=</span> DictMySQL(
 By default, it selects all columns.</li>
 <li>
 <strong>join</strong>: <em>dict, default None</em><br>
-See <a href="">JOIN Syntax</a> for more details.</li>
+See <a href="#join-syntax">JOIN Syntax</a> for more details.</li>
 <li>
 <strong>where</strong>: <em>dict, default None</em><br>
-See <a href="">WHERE Syntax</a> for more details.</li>
+See <a href="#where-syntax">WHERE Syntax</a> for more details.</li>
 <li>
 <strong>order</strong>: <em>string, default None</em><br>
 </li>
@@ -147,10 +147,10 @@ mysql.select(
 </li>
 <li>
 <strong>join</strong>: <em>dict, default None</em><br>
-See <a href="">JOIN Syntax</a> for more details.</li>
+See <a href="#join-syntax">JOIN Syntax</a> for more details.</li>
 <li>
 <strong>where</strong>: <em>dict, default None</em><br>
-See <a href="WHERE-Syntax">WHERE Syntax</a> for more details.</li>
+See <a href="#where-syntax">WHERE Syntax</a> for more details.</li>
 <li>
 <strong>insert</strong>: <em>bool, default False</em><br>
 When it is True, insert the input condition if there is no result found and return the id of new row.</li>
@@ -320,7 +320,7 @@ Whether to commit the statement.</li>
 </li>
 <li>
 <strong>where</strong>: <em>dict, default None</em><br>
-See <a href="">WHERE Syntax</a> for more details.</li>
+See <a href="#where-syntax">WHERE Syntax</a> for more details.</li>
 <li>
 <strong>commit</strong>: <em>bool, default True</em><br>
 Whether to commit the statement.</li>
@@ -355,7 +355,7 @@ Whether to commit the statement.</li>
 </li>
 <li>
 <strong>where</strong>: <em>dict, default None</em><br>
-See <a href="">WHERE Syntax</a> for more details.</li>
+See <a href="#where-syntax">WHERE Syntax</a> for more details.</li>
 <li>
 <strong>commit</strong>: <em>bool, default True</em><br>
 Whether to commit the statement.</li>
@@ -411,6 +411,29 @@ result <span class="pl-k">=</span> mysql.fetchall()
 
 <h2>
 <a id="where-syntax" class="anchor" href="#where-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>WHERE Syntax</h2>
+
+<p>DictMySQL provides a powerful WHERE syntax parser, transforming conditions from dict into SQS query.
+Simple Examples:</p>
+
+<div class="highlight highlight-source-python"><pre>mysql.select(
+    <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">5</span>, 
+           <span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>}
+)
+<span class="pl-c"># SELECT * FROM `jobs` WHERE (`id` = 5) AND (`value` = "Artist");</span>
+
+mysql.select(
+    <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>$&gt;=<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">5</span>}, 
+           <span class="pl-s"><span class="pl-pds">'</span>$LIKE<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Art%<span class="pl-pds">'</span></span>}}
+)
+<span class="pl-c"># SELECT * FROM `jobs` WHERE (`id` &gt;= 5) AND (`value` LIKE "Art%");</span>
+
+mysql.select(
+    <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>$OR<span class="pl-pds">'</span></span>: [{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">5</span>}, {<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">10</span>}, {<span class="pl-s"><span class="pl-pds">'</span>$IN<span class="pl-pds">'</span></span>: [<span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Manager<span class="pl-pds">'</span></span>]}]}
+)
+<span class="pl-c"># SELECT * FROM `jobs` WHERE ((`id` = 5) OR (`id` = 10) OR (`value` IN ("Programmer", "Manager")));</span></pre></div>
 
 <h2>
 <a id="join-syntax" class="anchor" href="#join-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>JOIN Syntax</h2>
