@@ -19,30 +19,91 @@
     </section>
 
     <section class="main-content">
-      <h1>
-<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of Contents</h1>
+      <h2>
+<a id="initialization" class="anchor" href="#initialization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialization</h2>
 
-<p><a href="#select">SELECT</a></p>
+<p>Parameters:</p>
 
-<p>[[SELECT|select]]</p>
+<ul>
+<li>
+<strong>host</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>user</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>passwd</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>db</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>port</strong>: <em>int, default 3306</em><br>
+</li>
+<li>
+<strong>charset</strong>: <em>string, default 'utf8'</em><br>
+</li>
+<li>
+<strong>init_command</strong>: <em>string, default 'SET NAMES UTF8'</em><br>
+</li>
+<li>
+<strong>dictcursor</strong>: <em>bool, default False</em><br>
+When it's True, the connector uses DictCursor instead of regular cursor, so that all the return of SQL query will be wrapped in dict.<br>
+</li>
+<li>
+<strong>use_unicode</strong>: <em>bool, default True</em><br>
+</li>
+</ul>
 
-<p>[[UPDATE|update]]
-[[INSERT|insert]]
-[[UPSERT|upsert]]
-[[DELETE|delete]]</p>
+<p>Returns: DictMySQL object</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-k">from</span> dictmysql <span class="pl-k">import</span> DictMySQL
+mysql <span class="pl-k">=</span> DictMySQL(<span class="pl-smi">db</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>occupation<span class="pl-pds">'</span></span>, <span class="pl-smi">host</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>127.0.0.1<span class="pl-pds">'</span></span>, <span class="pl-smi">user</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>root<span class="pl-pds">'</span></span>, <span class="pl-smi">passwd</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>)</pre></div>
 
 <h2>
-<a id="select" class="anchor" href="#select" aria-hidden="true"><span class="octicon octicon-link"></span></a>select</h2>
+<a id="select" class="anchor" href="#select" aria-hidden="true"><span class="octicon octicon-link"></span></a>SELECT</h2>
 
-<p><a id="select"></a></p>
+<p>Parameters:</p>
 
-<div class="highlight highlight-source-python"><pre><span class="pl-k">from</span> dictmysqldb <span class="pl-k">import</span> DictMySQLdb
-db <span class="pl-k">=</span> DictMySQLdb(<span class="pl-smi">db</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>occupation<span class="pl-pds">'</span></span>, <span class="pl-smi">host</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>127.0.0.1<span class="pl-pds">'</span></span>, <span class="pl-smi">passwd</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>, <span class="pl-smi">user</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>root<span class="pl-pds">'</span></span>)
+<ul>
+<li>
+<strong>table</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>columns</strong>: <em>list, default None</em><br>
+</li>
+<li>
+<strong>join</strong>: <em>dict, default None</em><br>
+See <a href="">JOIN Syntax</a> for more details.</li>
+<li>
+<strong>where</strong>: <em>dict, default None</em><br>
+See <a href="">WHERE Syntax</a> for more details.</li>
+<li>
+<strong>order</strong>: <em>string, default None</em><br>
+</li>
+<li>
+<strong>limit</strong>: <em>int|list, default None</em><br>
+</li>
+</ul>
 
-db.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>,
-          <span class="pl-smi">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>],
-          <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>$OR<span class="pl-pds">'</span></span>: [{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>$LIKE<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist%<span class="pl-pds">'</span></span>}}, {<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">10</span>}]})
-<span class="pl-c"># SELECT `id`, `value` FROM `jobs` WHERE (`value` LIKE "Artist%") OR (`id` = 10);</span></pre></div>
+<p>Returns: the result of SQL query.</p>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-source-python"><pre>mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>})
+<span class="pl-c"># SELECT * FROM `jobs` WHERE (`value` = "Artist");</span>
+
+mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+             <span class="pl-smi">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>jobs.id<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>profiles.id<span class="pl-pds">'</span></span>], 
+             <span class="pl-smi">join</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>profile_jobs<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>jobs.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>profile_jobs.job_id<span class="pl-pds">'</span></span>}, 
+                   <span class="pl-s"><span class="pl-pds">'</span>profiles<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>profile_jobs.profile_id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>profiles.id<span class="pl-pds">'</span></span>}}, 
+             <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>jobs.value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>})
+<span class="pl-c"># SELECT `jobs`.`id`, `profiles`.`id` FROM `jobs` </span>
+<span class="pl-c"># JOIN `profiles` ON `profile_jobs`.`profile_id`=`profiles`.`id` </span>
+<span class="pl-c"># JOIN `profile_jobs` ON `jobs`.`id`=`profile_jobs`.`job_id` </span>
+<span class="pl-c"># WHERE (`jobs`.`value` = "Artist");</span></pre></div>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/ligyxy/DictMySQL">DictMySQL</a> is maintained by <a href="https://github.com/ligyxy">ligyxy</a>.</span>
