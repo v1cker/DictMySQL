@@ -20,6 +20,11 @@
 
     <section class="main-content">
       <h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<div class="highlight highlight-source-shell"><pre>pip install dictmysql</pre></div>
+
+<h2>
 <a id="initialization-of-dictmysql" class="anchor" href="#initialization-of-dictmysql" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialization of DictMySQL()</h2>
 
 <h4>
@@ -416,8 +421,9 @@ mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span c
 
 
 mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
-             <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>$OR<span class="pl-pds">'</span></span>: [{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">5</span>}, {<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">10</span>}, {<span class="pl-s"><span class="pl-pds">'</span>$IN<span class="pl-pds">'</span></span>: [<span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Manager<span class="pl-pds">'</span></span>]}]})
-<span class="pl-c"># SELECT * FROM `jobs` WHERE ((`id` = 5) OR (`id` = 10) OR (`value` IN ("Programmer", "Manager")));</span></pre></div>
+             <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>$OR<span class="pl-pds">'</span></span>: [{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: [<span class="pl-c1">5</span>, <span class="pl-c1">10</span>]}, {<span class="pl-s"><span class="pl-pds">'</span>$IN<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: [<span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Manager<span class="pl-pds">'</span></span>]}}]})
+<span class="pl-c"># SELECT * FROM `jobs` WHERE ((`id` IN (5, 10)) OR (`value` IN ("Programmer", "Manager")));</span>
+<span class="pl-c"># The default operator is "IN" if the end value is a list</span></pre></div>
 
 <p>List of operators:</p>
 
