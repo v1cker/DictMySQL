@@ -20,7 +20,7 @@
 
     <section class="main-content">
       <h2>
-<a id="initialization" class="anchor" href="#initialization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialization</h2>
+<a id="initialization-of-dictmysql" class="anchor" href="#initialization-of-dictmysql" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialization of DictMySQL()</h2>
 
 <h4>
 <a id="parameters" class="anchor" href="#parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
@@ -202,6 +202,45 @@ Whether to commit the statement.</li>
 
 <div class="highlight highlight-source-python"><pre>mysql.insert(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-smi">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>UID<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>#UUID()<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>})
 <span class="pl-c"># INSERT INTO `jobs` (`UID`, `value`) VALUES (UUID(), "Programmer");</span></pre></div>
+
+<hr>
+
+<h2>
+<a id="insertmany" class="anchor" href="#insertmany" aria-hidden="true"><span class="octicon octicon-link"></span></a>insertmany()</h2>
+
+<p>Insert multiple values in one statement. SQL function is not supported in this method.</p>
+
+<h4>
+<a id="parameters-4" class="anchor" href="#parameters-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+
+<ul>
+<li>
+<strong>table</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>columns</strong>: <em>list</em><br>
+Column names need to be specified when inserting multiple values.</li>
+<li>
+<strong>value</strong>: <em>list|tuple</em><br>
+</li>
+<li>
+<strong>ignore</strong>: <em>bool, default False</em><br>
+Add the IGNORE option into the insert statement.</li>
+<li>
+<strong>commit</strong>: <em>bool, default True</em><br>
+Whether to commit the statement.</li>
+</ul>
+
+<h4>
+<a id="returns-4" class="anchor" href="#returns-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+
+<p>The last inserted id.</p>
+
+<h4>
+<a id="examples-3" class="anchor" href="#examples-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+
+<div class="highlight highlight-source-python"><pre>mysql.insertmany(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-smi">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>available<span class="pl-pds">'</span></span>], <span class="pl-smi">value</span><span class="pl-k">=</span>((<span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>yes<span class="pl-pds">'</span></span>), (<span class="pl-s"><span class="pl-pds">'</span>Manager<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>no<span class="pl-pds">'</span></span>))
+<span class="pl-c"># INSERT INTO `jobs` (`value`) VALUES ("Programmer", "yes"), ("Manager", "no");</span></pre></div>
 
 <hr>
 
