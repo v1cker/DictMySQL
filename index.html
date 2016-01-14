@@ -65,10 +65,12 @@ When it is True, the connector uses DictCursor instead of regular cursor, so tha
 <a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example:</h4>
 
 <div class="highlight highlight-source-python"><pre><span class="pl-k">from</span> dictmysql <span class="pl-k">import</span> DictMySQL
-mysql <span class="pl-k">=</span> DictMySQL(<span class="pl-smi">db</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>occupation<span class="pl-pds">'</span></span>, 
-                  <span class="pl-smi">host</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>127.0.0.1<span class="pl-pds">'</span></span>, 
-                  <span class="pl-smi">user</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>root<span class="pl-pds">'</span></span>, 
-                  <span class="pl-smi">passwd</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>)</pre></div>
+mysql <span class="pl-k">=</span> DictMySQL(
+    <span class="pl-smi">db</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>occupation<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">host</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>127.0.0.1<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">user</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>root<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">passwd</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+)</pre></div>
 
 <hr>
 
@@ -107,15 +109,20 @@ See <a href="">WHERE Syntax</a> for more details.</li>
 <h4>
 <a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
 
-<div class="highlight highlight-source-python"><pre>mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>})
+<div class="highlight highlight-source-python"><pre>mysql.select(
+    <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>}
+)
 <span class="pl-c"># SELECT * FROM `jobs` WHERE (`value` = "Artist");</span>
 <span class="pl-c"># Output: (5, )</span>
 
-mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
-             <span class="pl-smi">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>jobs.id<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>profiles.id<span class="pl-pds">'</span></span>], 
-             <span class="pl-smi">join</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>profile_jobs<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>jobs.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>profile_jobs.job_id<span class="pl-pds">'</span></span>}, 
-                   <span class="pl-s"><span class="pl-pds">'</span>profiles<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>profile_jobs.profile_id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>profiles.id<span class="pl-pds">'</span></span>}}, 
-             <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>jobs.value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>})
+mysql.select(
+    <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>jobs.id<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>profiles.id<span class="pl-pds">'</span></span>], 
+    <span class="pl-smi">join</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>profile_jobs<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>jobs.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>profile_jobs.job_id<span class="pl-pds">'</span></span>}, 
+          <span class="pl-s"><span class="pl-pds">'</span>profiles<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>profile_jobs.profile_id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>profiles.id<span class="pl-pds">'</span></span>}}, 
+    <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>jobs.value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>}
+)
 <span class="pl-c"># SELECT `jobs`.`id`, `profiles`.`id` FROM `jobs` </span>
 <span class="pl-c"># JOIN `profile_jobs` ON `jobs`.`id`=`profile_jobs`.`job_id` </span>
 <span class="pl-c"># JOIN `profiles` ON `profile_jobs`.`profile_id`=`profiles`.`id` </span>
@@ -126,7 +133,7 @@ mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span c
 <h2>
 <a id="get" class="anchor" href="#get" aria-hidden="true"><span class="octicon octicon-link"></span></a>get()</h2>
 
-<p>A simplified method of select, for getting the first result in one column only. The result will not be wrapped in a tuple or dict, no matter which cursor is used. A common case of using this method is fetching the unique id with given condition.</p>
+<p>A simplified method of select(), for getting one result in a single column. It can insert the condition as a new record when there is no result found. The result will not be wrapped in a tuple or dict, no matter which cursor is being used. A common case of using this method is fetching the unique id with given condition.</p>
 
 <h4>
 <a id="parameters-2" class="anchor" href="#parameters-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
@@ -160,9 +167,11 @@ When it is not null, raise an error with the input string if there is no result 
 <h4>
 <a id="examples-1" class="anchor" href="#examples-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
 
-<div class="highlight highlight-source-python"><pre>mysql.get(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
-          <span class="pl-smi">column</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>, 
-          <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>})
+<div class="highlight highlight-source-python"><pre>mysql.get(
+    <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">column</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>}
+)
 <span class="pl-c"># SELECT `id` FROM `jobs` WHERE (`value` = "Artist") LIMIT 1;</span>
 <span class="pl-c"># Output: 5</span></pre></div>
 
@@ -197,8 +206,10 @@ Whether to commit the statement.</li>
 <h4>
 <a id="examples-2" class="anchor" href="#examples-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
 
-<div class="highlight highlight-source-python"><pre>mysql.insert(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
-             <span class="pl-smi">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>})
+<div class="highlight highlight-source-python"><pre>mysql.insert(
+    <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>}
+)
 <span class="pl-c"># INSERT INTO `jobs` (`value`) VALUES ("Programmer");</span></pre></div>
 
 <h4>
@@ -246,10 +257,134 @@ Whether to commit the statement.</li>
 <h4>
 <a id="examples-3" class="anchor" href="#examples-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
 
-<div class="highlight highlight-source-python"><pre>mysql.insertmany(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
-                 <span class="pl-smi">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>available<span class="pl-pds">'</span></span>], 
-                 <span class="pl-smi">value</span><span class="pl-k">=</span>((<span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>yes<span class="pl-pds">'</span></span>), (<span class="pl-s"><span class="pl-pds">'</span>Manager<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>no<span class="pl-pds">'</span></span>))
+<div class="highlight highlight-source-python"><pre>mysql.insertmany(
+    <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>available<span class="pl-pds">'</span></span>], 
+    <span class="pl-smi">value</span><span class="pl-k">=</span>((<span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>yes<span class="pl-pds">'</span></span>), (<span class="pl-s"><span class="pl-pds">'</span>Manager<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>no<span class="pl-pds">'</span></span>)
+)
 <span class="pl-c"># INSERT INTO `jobs` (`value`) VALUES ("Programmer", "yes"), ("Manager", "no");</span></pre></div>
+
+<hr>
+
+<h2>
+<a id="upsert" class="anchor" href="#upsert" aria-hidden="true"><span class="octicon octicon-link"></span></a>upsert()</h2>
+
+<p>Update or insert the values with "ON DUPLICATE KEY UPDATE" syntax. Unique index is required for at least one of the columns.</p>
+
+<h4>
+<a id="parameters-5" class="anchor" href="#parameters-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+
+<ul>
+<li>
+<strong>table</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>value</strong>: <em>dict</em><br>
+</li>
+<li>
+<strong>update_columns</strong>: <em>list, default None</em><br>
+Specify the columns which will be updated if record exists. If it is None, all the columns in value will be update if possible.</li>
+<li>
+<strong>commit</strong>: <em>bool, default True</em><br>
+Whether to commit the statement.</li>
+</ul>
+
+<h4>
+<a id="returns-5" class="anchor" href="#returns-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+
+<p>The last inserted id.</p>
+
+<h4>
+<a id="examples-4" class="anchor" href="#examples-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+
+<div class="highlight highlight-source-python"><pre>mysql.upsert(
+    <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">5</span>, <span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>}
+)
+<span class="pl-c"># INSERT INTO `jobs` (`id`, `value`) VALUES (5, Artist) ON DUPLICATE KEY UPDATE `id`=VALUES(`id`), `value`=VALUES(`value`);</span></pre></div>
+
+<hr>
+
+<h2>
+<a id="update" class="anchor" href="#update" aria-hidden="true"><span class="octicon octicon-link"></span></a>update()</h2>
+
+<h4>
+<a id="parameters-6" class="anchor" href="#parameters-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+
+<ul>
+<li>
+<strong>table</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>value</strong>: <em>dict</em><br>
+</li>
+<li>
+<strong>where</strong>: <em>dict, default None</em><br>
+See <a href="">WHERE Syntax</a> for more details.</li>
+<li>
+<strong>commit</strong>: <em>bool, default True</em><br>
+Whether to commit the statement.</li>
+</ul>
+
+<h4>
+<a id="returns-6" class="anchor" href="#returns-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+
+<p>The number of effected rows.</p>
+
+<h4>
+<a id="examples-5" class="anchor" href="#examples-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+
+<div class="highlight highlight-source-python"><pre>mysql.update(
+    <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>},
+    <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">3</span>}
+)
+<span class="pl-c"># UPDATE `jobs` SET `value` = "Artist" WHERE (`id` = 3);</span></pre></div>
+
+<hr>
+
+<h2>
+<a id="delete" class="anchor" href="#delete" aria-hidden="true"><span class="octicon octicon-link"></span></a>delete()</h2>
+
+<h4>
+<a id="parameters-7" class="anchor" href="#parameters-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+
+<ul>
+<li>
+<strong>table</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>where</strong>: <em>dict, default None</em><br>
+See <a href="">WHERE Syntax</a> for more details.</li>
+<li>
+<strong>commit</strong>: <em>bool, default True</em><br>
+Whether to commit the statement.</li>
+</ul>
+
+<h4>
+<a id="returns-7" class="anchor" href="#returns-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+
+<p>The number of effected rows.</p>
+
+<h4>
+<a id="examples-6" class="anchor" href="#examples-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+
+<div class="highlight highlight-source-python"><pre>mysql.delete(
+    <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
+    <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">3</span>}
+)
+<span class="pl-c"># DELETE FROM `jobs` WHERE (`id` = 3);</span></pre></div>
+
+<hr>
+
+<h2>
+<a id="now" class="anchor" href="#now" aria-hidden="true"><span class="octicon octicon-link"></span></a>now()</h2>
+
+<h4>
+<a id="examples-7" class="anchor" href="#examples-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+
+<div class="highlight highlight-source-python"><pre>mysql.now()
+<span class="pl-c"># SELECT NOW() AS now;</span></pre></div>
 
 <hr>
 
