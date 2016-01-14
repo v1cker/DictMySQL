@@ -591,9 +591,34 @@ mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span c
 
 <p>Both of the parameter table and join support alias.</p>
 
-<div class="highlight highlight-source-python"><pre>mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs(j)<span class="pl-pds">'</span></span>, 
-             <span class="pl-smi">join</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>[&lt;&gt;]profile_job(pj)<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>j.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>pj.job_id<span class="pl-pds">'</span></span>}})
-<span class="pl-c"># SELECT * FROM `jobs` AS `j` FULL JOIN `profile_job` AS `pj` ON `j`.`id`=`pj`.`job_id`;</span></pre></div>
+<div class="highlight highlight-source-python"><pre>mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs(j)<span class="pl-pds">'</span></span>,
+             <span class="pl-smi">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>j.value<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>p.value<span class="pl-pds">'</span></span>],
+             <span class="pl-smi">join</span><span class="pl-k">=</span>{
+                 <span class="pl-s"><span class="pl-pds">'</span>[&lt;&gt;]profile_job(pj)<span class="pl-pds">'</span></span>: {
+                     <span class="pl-s"><span class="pl-pds">'</span>j.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>pj.job_id<span class="pl-pds">'</span></span>
+                 },
+                 <span class="pl-s"><span class="pl-pds">'</span>[&lt;&gt;]profile(p)<span class="pl-pds">'</span></span>: {
+                     <span class="pl-s"><span class="pl-pds">'</span>pj.profile_id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>p.id<span class="pl-pds">'</span></span>
+                 }
+             })
+<span class="pl-c"># SELECT `j`.`value`, `p`.`value` FROM `jobs` AS `j` </span>
+<span class="pl-c"># FULL JOIN `profile` AS `p` ON `pj`.`profile_id`=`p`.`id` </span>
+<span class="pl-c"># FULL JOIN `profile_job` AS `pj` ON `j`.`id`=`pj`.`job_id`;</span>
+
+
+mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>profile_job<span class="pl-pds">'</span></span>,
+             <span class="pl-smi">join</span><span class="pl-k">=</span>{
+                 <span class="pl-s"><span class="pl-pds">'</span>profile_job(pj1)<span class="pl-pds">'</span></span>: {
+                     <span class="pl-s"><span class="pl-pds">'</span>pj.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>pj.id_2<span class="pl-pds">'</span></span>
+                 },
+                 <span class="pl-s"><span class="pl-pds">'</span>profile_job(pj2)<span class="pl-pds">'</span></span>: {
+                     <span class="pl-s"><span class="pl-pds">'</span>pj.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>pj.id_3<span class="pl-pds">'</span></span>
+                 }
+             })
+<span class="pl-c"># SELECT * FROM `profile_job` </span>
+<span class="pl-c"># JOIN `profile_job` AS `pj2` ON `pj`.`id`=`pj`.`id_3` </span>
+<span class="pl-c"># JOIN `profile_job` AS `pj1` ON `pj`.`id`=`pj`.`id_2`;</span>
+<span class="pl-c"># When running self join, the joined tabled should be assigned different alias, otherwise they will have the same key</span></pre></div>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/ligyxy/DictMySQL">DictMySQL</a> is maintained by <a href="https://github.com/ligyxy">ligyxy</a>.</span>
