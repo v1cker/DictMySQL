@@ -150,7 +150,7 @@ mysql.select(
 See <a href="">JOIN Syntax</a> for more details.</li>
 <li>
 <strong>where</strong>: <em>dict, default None</em><br>
-See <a href="">WHERE Syntax</a> for more details.</li>
+See <a href="WHERE%20Syntax">WHERE Syntax</a> for more details.</li>
 <li>
 <strong>insert</strong>: <em>bool, default False</em><br>
 When it is True, insert the input condition if there is no result found and return the id of new row.</li>
@@ -380,13 +380,40 @@ Whether to commit the statement.</li>
 <h2>
 <a id="now" class="anchor" href="#now" aria-hidden="true"><span class="octicon octicon-link"></span></a>now()</h2>
 
-<h4>
-<a id="examples-7" class="anchor" href="#examples-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
-
 <div class="highlight highlight-source-python"><pre>mysql.now()
 <span class="pl-c"># SELECT NOW() AS now;</span></pre></div>
 
 <hr>
+
+<h2>
+<a id="query" class="anchor" href="#query" aria-hidden="true"><span class="octicon octicon-link"></span></a>query()</h2>
+
+<p>Run customized SQL query. Just like PyMySQL and MySQLdb, use fetchall() or fetchone() method to fetch the results.</p>
+
+<h4>
+<a id="parameters-8" class="anchor" href="#parameters-8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+
+<ul>
+<li>
+<strong>sql</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>args</strong>: <em>tuple|list, default None</em> 
+#### Examples:</li>
+</ul>
+
+<div class="highlight highlight-source-python"><pre>mysql.query(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">from</span> jobs <span class="pl-k">where</span> value <span class="pl-k">=</span> <span class="pl-c1">%s</span><span class="pl-pds">"</span></span>, (<span class="pl-s"><span class="pl-pds">'</span>manager<span class="pl-pds">'</span></span>,))
+result <span class="pl-k">=</span> mysql.fetchall()
+<span class="pl-k">print</span>(result)
+<span class="pl-c"># Output: ((10, "Manager"),)</span></pre></div>
+
+<hr>
+
+<h2>
+<a id="where-syntax" class="anchor" href="#where-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>WHERE Syntax</h2>
+
+<h2>
+<a id="join-syntax" class="anchor" href="#join-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>JOIN Syntax</h2>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/ligyxy/DictMySQL">DictMySQL</a> is maintained by <a href="https://github.com/ligyxy">ligyxy</a>.</span>
