@@ -116,6 +116,7 @@ See <a href="#where-syntax">WHERE Syntax</a> for more details.</li>
 <span class="pl-c"># SELECT * FROM `jobs` WHERE (`value` = "Artist");</span>
 <span class="pl-c"># Output: (5, )</span>
 
+
 mysql.select(
     <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
     <span class="pl-smi">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>jobs.id<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>profiles.id<span class="pl-pds">'</span></span>], 
@@ -301,7 +302,8 @@ Whether to commit the statement.</li>
     <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
     <span class="pl-smi">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">5</span>, <span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>}
 )
-<span class="pl-c"># INSERT INTO `jobs` (`id`, `value`) VALUES (5, Artist) ON DUPLICATE KEY UPDATE `id`=VALUES(`id`), `value`=VALUES(`value`);</span></pre></div>
+<span class="pl-c"># INSERT INTO `jobs` (`id`, `value`) VALUES (5, Artist) </span>
+<span class="pl-c"># ON DUPLICATE KEY UPDATE `id`=VALUES(`id`), `value`=VALUES(`value`);</span></pre></div>
 
 <hr>
 
@@ -412,8 +414,10 @@ result <span class="pl-k">=</span> mysql.fetchall()
 <h2>
 <a id="where-syntax" class="anchor" href="#where-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>WHERE Syntax</h2>
 
-<p>DictMySQL provides a powerful WHERE syntax parser, transforming conditions from dict into SQS query.
-Simple Examples:</p>
+<p>DictMySQL provides a powerful WHERE syntax parser, transforming conditions from dict into SQL query.</p>
+
+<h4>
+<a id="simple-examples" class="anchor" href="#simple-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.select(
     <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
@@ -422,12 +426,14 @@ Simple Examples:</p>
 )
 <span class="pl-c"># SELECT * FROM `jobs` WHERE (`id` = 5) AND (`value` = "Artist");</span>
 
+
 mysql.select(
     <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
     <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>$&gt;=<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">5</span>}, 
            <span class="pl-s"><span class="pl-pds">'</span>$LIKE<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Art%<span class="pl-pds">'</span></span>}}
 )
 <span class="pl-c"># SELECT * FROM `jobs` WHERE (`id` &gt;= 5) AND (`value` LIKE "Art%");</span>
+
 
 mysql.select(
     <span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
