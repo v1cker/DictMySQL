@@ -22,7 +22,8 @@
       <h2>
 <a id="initialization" class="anchor" href="#initialization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialization</h2>
 
-<p>Parameters:</p>
+<h4>
+<a id="parameters" class="anchor" href="#parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
 
 <ul>
 <li>
@@ -48,24 +49,31 @@
 </li>
 <li>
 <strong>dictcursor</strong>: <em>bool, default False</em><br>
-When it's True, the connector uses DictCursor instead of regular cursor, so that all the return of SQL query will be wrapped in dict.<br>
+When it is True, the connector uses DictCursor instead of regular cursor, so that all the return of SQL query will be wrapped in dict.<br>
 </li>
 <li>
 <strong>use_unicode</strong>: <em>bool, default True</em><br>
 </li>
 </ul>
 
-<p>Returns: DictMySQL object</p>
+<h4>
+<a id="returns" class="anchor" href="#returns" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
 
-<p>Example:</p>
+<p>DictMySQL object</p>
+
+<h4>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example:</h4>
 
 <div class="highlight highlight-source-python"><pre><span class="pl-k">from</span> dictmysql <span class="pl-k">import</span> DictMySQL
 mysql <span class="pl-k">=</span> DictMySQL(<span class="pl-smi">db</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>occupation<span class="pl-pds">'</span></span>, <span class="pl-smi">host</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>127.0.0.1<span class="pl-pds">'</span></span>, <span class="pl-smi">user</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>root<span class="pl-pds">'</span></span>, <span class="pl-smi">passwd</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>)</pre></div>
 
-<h2>
-<a id="select" class="anchor" href="#select" aria-hidden="true"><span class="octicon octicon-link"></span></a>SELECT</h2>
+<hr>
 
-<p>Parameters:</p>
+<h2>
+<a id="select" class="anchor" href="#select" aria-hidden="true"><span class="octicon octicon-link"></span></a>select()</h2>
+
+<h4>
+<a id="parameters-1" class="anchor" href="#parameters-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
 
 <ul>
 <li>
@@ -73,7 +81,7 @@ mysql <span class="pl-k">=</span> DictMySQL(<span class="pl-smi">db</span><span 
 </li>
 <li>
 <strong>columns</strong>: <em>list, default None</em><br>
-</li>
+By default, it selects all columns.</li>
 <li>
 <strong>join</strong>: <em>dict, default None</em><br>
 See <a href="">JOIN Syntax</a> for more details.</li>
@@ -88,12 +96,17 @@ See <a href="">WHERE Syntax</a> for more details.</li>
 </li>
 </ul>
 
-<p>Returns: the result of SQL query.</p>
+<h4>
+<a id="returns-1" class="anchor" href="#returns-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
 
-<p>Examples:</p>
+<p>The result of SQL query.</p>
+
+<h4>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>})
 <span class="pl-c"># SELECT * FROM `jobs` WHERE (`value` = "Artist");</span>
+<span class="pl-c"># Output: (5, )</span>
 
 mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
              <span class="pl-smi">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>jobs.id<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>profiles.id<span class="pl-pds">'</span></span>], 
@@ -104,6 +117,93 @@ mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span c
 <span class="pl-c"># JOIN `profiles` ON `profile_jobs`.`profile_id`=`profiles`.`id` </span>
 <span class="pl-c"># JOIN `profile_jobs` ON `jobs`.`id`=`profile_jobs`.`job_id` </span>
 <span class="pl-c"># WHERE (`jobs`.`value` = "Artist");</span></pre></div>
+
+<hr>
+
+<h2>
+<a id="get" class="anchor" href="#get" aria-hidden="true"><span class="octicon octicon-link"></span></a>get()</h2>
+
+<p>A simplified method of select, for getting the first result in one column only. The result will not be wrapped in a tuple or dict, no matter which cursor is used. A common case of using this method is fetching the unique id with given condition.</p>
+
+<h4>
+<a id="parameters-2" class="anchor" href="#parameters-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+
+<ul>
+<li>
+<strong>table</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>column</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>join</strong>: <em>dict, default None</em><br>
+See <a href="">JOIN Syntax</a> for more details.</li>
+<li>
+<strong>where</strong>: <em>dict, default None</em><br>
+See <a href="">WHERE Syntax</a> for more details.</li>
+<li>
+<strong>insert</strong>: <em>bool, default False</em><br>
+When it is True, insert the input condition if there is no result found and return the id of new row.</li>
+<li>
+<strong>ifnone</strong>: <em>string, default None</em><br>
+When it is not null, raise an error with the input string if there is no result found. Parameter insert will be unavailable in this situation.</li>
+</ul>
+
+<h4>
+<a id="returns-2" class="anchor" href="#returns-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+
+<p>The single result of SQL query.</p>
+
+<h4>
+<a id="examples-1" class="anchor" href="#examples-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+
+<div class="highlight highlight-source-python"><pre>mysql.get(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-smi">column</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>, <span class="pl-smi">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>})
+<span class="pl-c"># SELECT `id` FROM `jobs` WHERE (`value` = "Artist") LIMIT 1;</span>
+<span class="pl-c"># Output: 5</span></pre></div>
+
+<hr>
+
+<h2>
+<a id="insert" class="anchor" href="#insert" aria-hidden="true"><span class="octicon octicon-link"></span></a>insert()</h2>
+
+<h4>
+<a id="parameters-3" class="anchor" href="#parameters-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+
+<ul>
+<li>
+<strong>table</strong>: <em>string</em><br>
+</li>
+<li>
+<strong>value</strong>: <em>dict</em><br>
+</li>
+<li>
+<strong>ignore</strong>: <em>bool, default False</em><br>
+Add the IGNORE option into the insert statement.</li>
+<li>
+<strong>commit</strong>: <em>bool, default True</em><br>
+Whether to commit the statement.</li>
+</ul>
+
+<h4>
+<a id="returns-3" class="anchor" href="#returns-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+
+<p>The last inserted id.</p>
+
+<h4>
+<a id="examples-2" class="anchor" href="#examples-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+
+<div class="highlight highlight-source-python"><pre>mysql.insert(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-smi">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>})
+<span class="pl-c"># INSERT INTO `jobs` (`value`) VALUES ("Programmer");</span></pre></div>
+
+<h4>
+<a id="sql-functions" class="anchor" href="#sql-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL Functions</h4>
+
+<p>For all SQL functions, add <code>#</code> before the function name and it will not be quoted or escaped.</p>
+
+<div class="highlight highlight-source-python"><pre>mysql.insert(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-smi">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>UID<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>#UUID()<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>})
+<span class="pl-c"># INSERT INTO `jobs` (`UID`, `value`) VALUES (UUID(), "Programmer");</span></pre></div>
+
+<hr>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/ligyxy/DictMySQL">DictMySQL</a> is maintained by <a href="https://github.com/ligyxy">ligyxy</a>.</span>
