@@ -556,6 +556,8 @@ where <span class="pl-k">=</span> {
 
 <p>Not supported yet</p>
 
+<hr>
+
 <h2>
 <a id="join-syntax" class="anchor" href="#join-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>JOIN Syntax</h2>
 
@@ -578,7 +580,11 @@ where <span class="pl-k">=</span> {
 <a id="examples-8" class="anchor" href="#examples-8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>cerebro.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
-               <span class="pl-smi">join</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>[&gt;]profile_job<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>jobs.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>profile_job.job_id<span class="pl-pds">'</span></span>}})
+               <span class="pl-smi">join</span><span class="pl-k">=</span>{
+                   <span class="pl-s"><span class="pl-pds">'</span>[&gt;]profile_job<span class="pl-pds">'</span></span>: {
+                       <span class="pl-s"><span class="pl-pds">'</span>jobs.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>profile_job.job_id<span class="pl-pds">'</span></span>
+                   }
+               })
 <span class="pl-c"># SELECT * FROM `jobs` LEFT JOIN `profile_job` ON `jobs`.`id`=`profile_job`.`job_id`;</span>
 
 mysql.select(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
