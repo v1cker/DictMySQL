@@ -398,6 +398,24 @@ result <span class="pl-k">=</span> mysql.fetchall()
 <hr>
 
 <h2>
+<a id="now" class="anchor" href="#now" aria-hidden="true"><span class="octicon octicon-link"></span></a>now()</h2>
+
+<div class="highlight highlight-source-python"><pre>mysql.now()
+<span class="pl-c"># SELECT NOW() AS now;</span></pre></div>
+
+<hr>
+
+<h2>
+<a id="last_insert_id" class="anchor" href="#last_insert_id" aria-hidden="true"><span class="octicon octicon-link"></span></a>last_insert_id()</h2>
+
+<p>Fetching the id of last inserted row.</p>
+
+<div class="highlight highlight-source-python"><pre>mysql.last_insert_id()
+<span class="pl-c"># SELECT LAST_INSERT_ID() AS lid;;</span></pre></div>
+
+<hr>
+
+<h2>
 <a id="where-syntax" class="anchor" href="#where-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>WHERE Syntax</h2>
 
 <p>DictMySQL provides a powerful WHERE syntax parser, transforming conditions from dict into SQL query.</p>
@@ -635,22 +653,6 @@ mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span cla
 <span class="pl-c"># When performing self join, the joined table should be assigned different alias, </span>
 <span class="pl-c"># otherwise they will have the same key.</span></pre></div>
 
-<h2>
-<a id="now" class="anchor" href="#now" aria-hidden="true"><span class="octicon octicon-link"></span></a>now()</h2>
-
-<div class="highlight highlight-source-python"><pre>mysql.now()
-<span class="pl-c"># SELECT NOW() AS now;</span></pre></div>
-
-<hr>
-
-<h2>
-<a id="last_insert_id" class="anchor" href="#last_insert_id" aria-hidden="true"><span class="octicon octicon-link"></span></a>last_insert_id()</h2>
-
-<p>Fetching the id of last inserted row.</p>
-
-<div class="highlight highlight-source-python"><pre>mysql.last_insert_id()
-<span class="pl-c"># SELECT LAST_INSERT_ID() AS lid;;</span></pre></div>
-
 <hr>
 
 <h2>
@@ -667,6 +669,8 @@ mysql.now()
 mysql.reconnect()
 mysql.now()
 <span class="pl-c"># Works again</span></pre></div>
+
+<hr>
 
 <h2>
 <a id="debug" class="anchor" href="#debug" aria-hidden="true"><span class="octicon octicon-link"></span></a>Debug</h2>
