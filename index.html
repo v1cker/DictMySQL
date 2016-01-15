@@ -366,7 +366,14 @@ Whether to commit the statement.</li>
 <a id="examples-6" class="anchor" href="#examples-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.delete(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-v">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">3</span>})
-<span class="pl-c"># DELETE FROM `jobs` WHERE (`id` = 3);</span></pre></div>
+<span class="pl-c"># DELETE FROM `jobs` WHERE (`id` = 3);</span>
+
+
+
+mysql.delete(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-v">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">3</span>}, <span class="pl-v">commit</span><span class="pl-k">=</span><span class="pl-c1">False</span>)
+<span class="pl-c"># Do something else</span>
+mysql.commit()
+<span class="pl-c"># Commit all statements above</span></pre></div>
 
 <hr>
 
