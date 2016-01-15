@@ -128,6 +128,14 @@ mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span cla
 <span class="pl-c"># JOIN `profiles` ON `profile_jobs`.`profile_id`=`profiles`.`id` </span>
 <span class="pl-c"># WHERE (`jobs`.`value` = "Artist");</span></pre></div>
 
+<h4>
+<a id="sql-functions" class="anchor" href="#sql-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL Functions</h4>
+
+<p>For all SQL functions, add a <code>#</code> before the column name or function name, and the value will not be quoted or escaped.</p>
+
+<div class="highlight highlight-source-python"><pre>mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-v">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>#min(id)<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>], <span class="pl-v">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: {<span class="pl-s"><span class="pl-pds">'</span>$LIKE<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Art%<span class="pl-pds">'</span></span>}})
+<span class="pl-c"># SELECT min(id), `value` FROM `profile_job` WHERE (`value` LIKE Art%);</span></pre></div>
+
 <hr>
 
 <h2>
@@ -209,7 +217,7 @@ Whether to commit the statement.</li>
 <span class="pl-c"># INSERT INTO `jobs` (`value`) VALUES ("Programmer");</span></pre></div>
 
 <h4>
-<a id="sql-functions" class="anchor" href="#sql-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL Functions</h4>
+<a id="sql-functions-1" class="anchor" href="#sql-functions-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL Functions</h4>
 
 <p>For all SQL functions, add a <code>#</code> before the column name and its value will not be quoted or escaped.</p>
 
@@ -552,7 +560,7 @@ where <span class="pl-k">=</span> {
 <span class="pl-c"># WHERE (((`id` = 5) OR (`id` = 10)) AND (`value` LIKE "Art%"))</span></pre></div>
 
 <h4>
-<a id="sql-functions-1" class="anchor" href="#sql-functions-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL Functions</h4>
+<a id="sql-functions-2" class="anchor" href="#sql-functions-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL Functions</h4>
 
 <p>For all SQL functions, add a <code>#</code> before the column name and its value will not be quoted or escaped.</p>
 
