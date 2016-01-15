@@ -211,10 +211,10 @@ Whether to commit the statement.</li>
 <h4>
 <a id="sql-functions" class="anchor" href="#sql-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL Functions</h4>
 
-<p>For all SQL functions, add <code>#</code> before the function name and it will not be quoted or escaped.</p>
+<p>For all SQL functions, add a <code>#</code> before the column name and its value will not be quoted or escaped.</p>
 
 <div class="highlight highlight-source-python"><pre>mysql.insert(<span class="pl-smi">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
-             <span class="pl-smi">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>UID<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>#UUID()<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>})
+             <span class="pl-smi">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>#UID<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>UUID()<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>})
 <span class="pl-c"># INSERT INTO `jobs` (`UID`, `value`) VALUES (UUID(), "Programmer");</span></pre></div>
 
 <hr>
@@ -554,7 +554,16 @@ where <span class="pl-k">=</span> {
 <h4>
 <a id="sql-functions-1" class="anchor" href="#sql-functions-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL Functions</h4>
 
-<p>Not supported yet</p>
+<p>For all SQL functions, add a <code>#</code> before the column name and its value will not be quoted or escaped.</p>
+
+<div class="highlight highlight-source-python"><pre>where <span class="pl-k">=</span> {
+    <span class="pl-s"><span class="pl-pds">'</span>#created<span class="pl-pds">'</span></span>: {
+        <span class="pl-s"><span class="pl-pds">'</span>$=<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>date(now())<span class="pl-pds">'</span></span>
+    }
+}</pre></div>
+
+<h1>
+<a id="where-created--datenow" class="anchor" href="#where-created--datenow" aria-hidden="true"><span class="octicon octicon-link"></span></a>WHERE (<code>created</code> = date(now()))</h1>
 
 <hr>
 
