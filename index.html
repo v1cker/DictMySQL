@@ -20,15 +20,15 @@
 
     <section class="main-content">
       <h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <div class="highlight highlight-source-shell"><pre>pip install dictmysql</pre></div>
 
 <h2>
-<a id="initialization-of-dictmysql" class="anchor" href="#initialization-of-dictmysql" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialization of DictMySQL()</h2>
+<a id="initialization-of-dictmysql" class="anchor" href="#initialization-of-dictmysql" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Initialization of DictMySQL()</h2>
 
 <h4>
-<a id="parameters" class="anchor" href="#parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+<a id="parameters" class="anchor" href="#parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parameters:</h4>
 
 <ul>
 <li>
@@ -62,12 +62,12 @@ When it is True, the connector uses DictCursor instead of regular cursor, so tha
 </ul>
 
 <h4>
-<a id="returns" class="anchor" href="#returns" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+<a id="returns" class="anchor" href="#returns" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Returns:</h4>
 
 <p>DictMySQL object</p>
 
 <h4>
-<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example:</h4>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example:</h4>
 
 <div class="highlight highlight-source-python"><pre><span class="pl-k">from</span> dictmysql <span class="pl-k">import</span> DictMySQL
 mysql <span class="pl-k">=</span> DictMySQL(<span class="pl-v">db</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>occupation<span class="pl-pds">'</span></span>, 
@@ -78,10 +78,10 @@ mysql <span class="pl-k">=</span> DictMySQL(<span class="pl-v">db</span><span cl
 <hr>
 
 <h2>
-<a id="select" class="anchor" href="#select" aria-hidden="true"><span class="octicon octicon-link"></span></a>select()</h2>
+<a id="select" class="anchor" href="#select" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>select()</h2>
 
 <h4>
-<a id="parameters-1" class="anchor" href="#parameters-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+<a id="parameters-1" class="anchor" href="#parameters-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parameters:</h4>
 
 <ul>
 <li>
@@ -105,12 +105,12 @@ See <a href="#where-syntax">WHERE Syntax</a> for more details.</li>
 </ul>
 
 <h4>
-<a id="returns-1" class="anchor" href="#returns-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+<a id="returns-1" class="anchor" href="#returns-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Returns:</h4>
 
 <p>The result of SQL query.</p>
 
 <h4>
-<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
              <span class="pl-v">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>})
@@ -126,7 +126,7 @@ mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span cla
 <span class="pl-c"># Parameter limit not only accept int, but also list value if there is offset.</span></pre></div>
 
 <h4>
-<a id="sql-functions" class="anchor" href="#sql-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL Functions</h4>
+<a id="sql-functions" class="anchor" href="#sql-functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SQL Functions</h4>
 
 <p>For all SQL functions, add a <code>#</code> before the column name or function name, and the value will not be quoted or escaped.</p>
 
@@ -136,12 +136,12 @@ mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span cla
 <hr>
 
 <h2>
-<a id="get" class="anchor" href="#get" aria-hidden="true"><span class="octicon octicon-link"></span></a>get()</h2>
+<a id="get" class="anchor" href="#get" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>get()</h2>
 
 <p>A simplified method of select(), for getting one result in a single column. It can insert the condition as a new record when there is no result found. The result will not be wrapped in a tuple or dict, no matter which cursor is being used. A common case of using this method is fetching the unique id with given condition.</p>
 
 <h4>
-<a id="parameters-2" class="anchor" href="#parameters-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+<a id="parameters-2" class="anchor" href="#parameters-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parameters:</h4>
 
 <ul>
 <li>
@@ -165,12 +165,12 @@ When it is not null, raise an error with the input string if there is no result 
 </ul>
 
 <h4>
-<a id="returns-2" class="anchor" href="#returns-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+<a id="returns-2" class="anchor" href="#returns-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Returns:</h4>
 
 <p>The single result of SQL query.</p>
 
 <h4>
-<a id="examples-1" class="anchor" href="#examples-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+<a id="examples-1" class="anchor" href="#examples-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.get(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
           <span class="pl-v">column</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>, 
@@ -181,10 +181,10 @@ When it is not null, raise an error with the input string if there is no result 
 <hr>
 
 <h2>
-<a id="insert" class="anchor" href="#insert" aria-hidden="true"><span class="octicon octicon-link"></span></a>insert()</h2>
+<a id="insert" class="anchor" href="#insert" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>insert()</h2>
 
 <h4>
-<a id="parameters-3" class="anchor" href="#parameters-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+<a id="parameters-3" class="anchor" href="#parameters-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parameters:</h4>
 
 <ul>
 <li>
@@ -202,19 +202,19 @@ Whether to commit the statement.</li>
 </ul>
 
 <h4>
-<a id="returns-3" class="anchor" href="#returns-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+<a id="returns-3" class="anchor" href="#returns-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Returns:</h4>
 
 <p>The last inserted id.</p>
 
 <h4>
-<a id="examples-2" class="anchor" href="#examples-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+<a id="examples-2" class="anchor" href="#examples-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.insert(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
              <span class="pl-v">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Programmer<span class="pl-pds">'</span></span>})
 <span class="pl-c"># INSERT INTO `jobs` (`value`) VALUES ("Programmer");</span></pre></div>
 
 <h4>
-<a id="sql-functions-1" class="anchor" href="#sql-functions-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL Functions</h4>
+<a id="sql-functions-1" class="anchor" href="#sql-functions-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SQL Functions</h4>
 
 <p>For all SQL functions, add a <code>#</code> before the column name and its value will not be quoted or escaped.</p>
 
@@ -225,12 +225,12 @@ Whether to commit the statement.</li>
 <hr>
 
 <h2>
-<a id="insertmany" class="anchor" href="#insertmany" aria-hidden="true"><span class="octicon octicon-link"></span></a>insertmany()</h2>
+<a id="insertmany" class="anchor" href="#insertmany" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>insertmany()</h2>
 
 <p>Insert multiple values in one statement. SQL function is not supported in this method.</p>
 
 <h4>
-<a id="parameters-4" class="anchor" href="#parameters-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+<a id="parameters-4" class="anchor" href="#parameters-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parameters:</h4>
 
 <ul>
 <li>
@@ -251,12 +251,12 @@ Whether to commit the statement.</li>
 </ul>
 
 <h4>
-<a id="returns-4" class="anchor" href="#returns-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+<a id="returns-4" class="anchor" href="#returns-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Returns:</h4>
 
 <p>The last inserted id.</p>
 
 <h4>
-<a id="examples-3" class="anchor" href="#examples-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+<a id="examples-3" class="anchor" href="#examples-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.insertmany(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
                  <span class="pl-v">columns</span><span class="pl-k">=</span>[<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>available<span class="pl-pds">'</span></span>], 
@@ -266,12 +266,12 @@ Whether to commit the statement.</li>
 <hr>
 
 <h2>
-<a id="upsert" class="anchor" href="#upsert" aria-hidden="true"><span class="octicon octicon-link"></span></a>upsert()</h2>
+<a id="upsert" class="anchor" href="#upsert" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>upsert()</h2>
 
 <p>Update or insert the values with "ON DUPLICATE KEY UPDATE" syntax. Unique index is required for at least one of the columns.</p>
 
 <h4>
-<a id="parameters-5" class="anchor" href="#parameters-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+<a id="parameters-5" class="anchor" href="#parameters-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parameters:</h4>
 
 <ul>
 <li>
@@ -289,12 +289,12 @@ Whether to commit the statement.</li>
 </ul>
 
 <h4>
-<a id="returns-5" class="anchor" href="#returns-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+<a id="returns-5" class="anchor" href="#returns-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Returns:</h4>
 
 <p>The last inserted id.</p>
 
 <h4>
-<a id="examples-4" class="anchor" href="#examples-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+<a id="examples-4" class="anchor" href="#examples-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.upsert(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
              <span class="pl-v">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">5</span>, <span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>})
@@ -304,10 +304,10 @@ Whether to commit the statement.</li>
 <hr>
 
 <h2>
-<a id="update" class="anchor" href="#update" aria-hidden="true"><span class="octicon octicon-link"></span></a>update()</h2>
+<a id="update" class="anchor" href="#update" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>update()</h2>
 
 <h4>
-<a id="parameters-6" class="anchor" href="#parameters-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+<a id="parameters-6" class="anchor" href="#parameters-6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parameters:</h4>
 
 <ul>
 <li>
@@ -325,12 +325,12 @@ Whether to commit the statement.</li>
 </ul>
 
 <h4>
-<a id="returns-6" class="anchor" href="#returns-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+<a id="returns-6" class="anchor" href="#returns-6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Returns:</h4>
 
 <p>The number of effected rows.</p>
 
 <h4>
-<a id="examples-5" class="anchor" href="#examples-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+<a id="examples-5" class="anchor" href="#examples-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.update(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
              <span class="pl-v">value</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>},
@@ -340,10 +340,10 @@ Whether to commit the statement.</li>
 <hr>
 
 <h2>
-<a id="delete" class="anchor" href="#delete" aria-hidden="true"><span class="octicon octicon-link"></span></a>delete()</h2>
+<a id="delete" class="anchor" href="#delete" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>delete()</h2>
 
 <h4>
-<a id="parameters-7" class="anchor" href="#parameters-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+<a id="parameters-7" class="anchor" href="#parameters-7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parameters:</h4>
 
 <ul>
 <li>
@@ -358,12 +358,12 @@ Whether to commit the statement.</li>
 </ul>
 
 <h4>
-<a id="returns-7" class="anchor" href="#returns-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Returns:</h4>
+<a id="returns-7" class="anchor" href="#returns-7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Returns:</h4>
 
 <p>The number of effected rows.</p>
 
 <h4>
-<a id="examples-6" class="anchor" href="#examples-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+<a id="examples-6" class="anchor" href="#examples-6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.delete(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, <span class="pl-v">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">3</span>})
 <span class="pl-c"># DELETE FROM `jobs` WHERE (`id` = 3);</span>
@@ -378,12 +378,12 @@ mysql.commit()
 <hr>
 
 <h2>
-<a id="query" class="anchor" href="#query" aria-hidden="true"><span class="octicon octicon-link"></span></a>query()</h2>
+<a id="query" class="anchor" href="#query" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>query()</h2>
 
 <p>Run customized SQL query. Just like PyMySQL and MySQLdb, use fetchall() or fetchone() method to fetch the results.</p>
 
 <h4>
-<a id="parameters-8" class="anchor" href="#parameters-8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters:</h4>
+<a id="parameters-8" class="anchor" href="#parameters-8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Parameters:</h4>
 
 <ul>
 <li>
@@ -395,7 +395,7 @@ mysql.commit()
 </ul>
 
 <h4>
-<a id="examples-7" class="anchor" href="#examples-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+<a id="examples-7" class="anchor" href="#examples-7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.query(<span class="pl-s"><span class="pl-pds">"</span>SELECT * from jobs where value = <span class="pl-c1">%s</span><span class="pl-pds">"</span></span>, (<span class="pl-s"><span class="pl-pds">'</span>manager<span class="pl-pds">'</span></span>,))
 result <span class="pl-k">=</span> mysql.fetchall()
@@ -405,7 +405,7 @@ result <span class="pl-k">=</span> mysql.fetchall()
 <hr>
 
 <h2>
-<a id="now" class="anchor" href="#now" aria-hidden="true"><span class="octicon octicon-link"></span></a>now()</h2>
+<a id="now" class="anchor" href="#now" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>now()</h2>
 
 <div class="highlight highlight-source-python"><pre>mysql.now()
 <span class="pl-c"># SELECT NOW() AS now;</span></pre></div>
@@ -413,7 +413,7 @@ result <span class="pl-k">=</span> mysql.fetchall()
 <hr>
 
 <h2>
-<a id="last_insert_id" class="anchor" href="#last_insert_id" aria-hidden="true"><span class="octicon octicon-link"></span></a>last_insert_id()</h2>
+<a id="last_insert_id" class="anchor" href="#last_insert_id" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>last_insert_id()</h2>
 
 <p>Fetching the id of last inserted row.</p>
 
@@ -423,12 +423,12 @@ result <span class="pl-k">=</span> mysql.fetchall()
 <hr>
 
 <h2>
-<a id="where-syntax" class="anchor" href="#where-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>WHERE Syntax</h2>
+<a id="where-syntax" class="anchor" href="#where-syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>WHERE Syntax</h2>
 
 <p>DictMySQL provides a powerful WHERE syntax parser, transforming conditions from dict into SQL query.</p>
 
 <h4>
-<a id="simple-examples" class="anchor" href="#simple-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple Examples:</h4>
+<a id="simple-examples" class="anchor" href="#simple-examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>where <span class="pl-k">=</span> {<span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: <span class="pl-c1">5</span>, <span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>}
 <span class="pl-c"># WHERE (`id` = 5) AND (`value` = "Artist")</span>
@@ -495,7 +495,7 @@ where <span class="pl-k">=</span> {
 <p>Operators are case-insensitive.</p>
 
 <h4>
-<a id="some-more-examples" class="anchor" href="#some-more-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Some More Examples:</h4>
+<a id="some-more-examples" class="anchor" href="#some-more-examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Some More Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>where <span class="pl-k">=</span> {
     <span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>: {
@@ -523,11 +523,10 @@ where <span class="pl-k">=</span> {
     ]
 }
 <span class="pl-c"># WHERE ((`id` &gt; 5) AND (`id` &lt; 10))</span>
-<span class="pl-c"># Generally, it is OK to switch the position of operator and column name, as long as there </span>
-<span class="pl-c"># is no $NOT operator.</span></pre></div>
+<span class="pl-c"># Switching the position of operator and column name is also acceptable.</span></pre></div>
 
 <h4>
-<a id="not-operator" class="anchor" href="#not-operator" aria-hidden="true"><span class="octicon octicon-link"></span></a>$NOT operator</h4>
+<a id="not-operator" class="anchor" href="#not-operator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>$NOT operator</h4>
 
 <div class="highlight highlight-source-python"><pre>where <span class="pl-k">=</span> {
     <span class="pl-s"><span class="pl-pds">'</span>$NOT<span class="pl-pds">'</span></span>: {
@@ -546,11 +545,52 @@ where <span class="pl-k">=</span> {
     }
 }
 <span class="pl-c"># WHERE ((`id` &lt;= 5) OR (`id` &gt;= 10))</span>
-<span class="pl-c"># A list value must not follow a $NOT operator, otherwise the statement might have various </span>
-<span class="pl-c"># interpretation.</span></pre></div>
+<span class="pl-c"># A $NOT operator will reverse the meaning of whole operator chain. In the example above, $AND -&gt; $OR and $&lt; -&gt; $&gt;=.</span></pre></div>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-c"># Note that switching the position of $NOT and other operators might cause ambiguity. It might reverse the whole operator chain or the single operator only, which will be confusing since it can't be distinguished from the input JSON. So we define：</span>
+<span class="pl-c"># Reverse the logic operator - (not (A and B)) == ((not A) or (not B))</span>
+<span class="pl-c"># Example: </span>
+where <span class="pl-k">=</span> {
+    <span class="pl-s"><span class="pl-pds">'</span>$NOT<span class="pl-pds">'</span></span>: {
+        <span class="pl-s"><span class="pl-pds">'</span>$AND<span class="pl-pds">'</span></span>: [
+            {
+                <span class="pl-s"><span class="pl-pds">'</span>$LIKE<span class="pl-pds">'</span></span>: {
+                    <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>David%<span class="pl-pds">'</span></span>
+                }
+            },
+            {
+                <span class="pl-s"><span class="pl-pds">'</span>$LIKE<span class="pl-pds">'</span></span>: {
+                    <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span><span class="pl-c1">%Le</span>e<span class="pl-pds">'</span></span>
+                }
+            }
+        ]
+    }
+}
+<span class="pl-c"># (`name` NOT LIKE 'David%') OR (`name` NOT LIKE '%Lee')</span>
+
+
+<span class="pl-c"># Keep the logic operator - ((not A) and (not B))</span>
+<span class="pl-c"># Example: </span>
+where <span class="pl-k">=</span> {
+    <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>: {
+        <span class="pl-s"><span class="pl-pds">'</span>$AND<span class="pl-pds">'</span></span>: [
+            {
+                <span class="pl-s"><span class="pl-pds">'</span>$NOT<span class="pl-pds">'</span></span>: {
+                    <span class="pl-s"><span class="pl-pds">'</span>$LIKE<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>David%<span class="pl-pds">'</span></span>
+                }
+            },
+            {
+                <span class="pl-s"><span class="pl-pds">'</span>$NOT<span class="pl-pds">'</span></span>: {
+                    <span class="pl-s"><span class="pl-pds">'</span>$LIKE<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span><span class="pl-c1">%Le</span>e<span class="pl-pds">'</span></span>
+                }
+            }
+        ]
+    }
+}
+<span class="pl-c"># (`name` NOT LIKE 'David%') AND (`name` NOT LIKE '%Lee')</span></pre></div>
 
 <h4>
-<a id="compound-logic-operator" class="anchor" href="#compound-logic-operator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compound logic operator</h4>
+<a id="compound-logic-operator" class="anchor" href="#compound-logic-operator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compound logic operator</h4>
 
 <div class="highlight highlight-source-python"><pre>where <span class="pl-k">=</span> {
     <span class="pl-s"><span class="pl-pds">'</span>$AND<span class="pl-pds">'</span></span>: [
@@ -574,7 +614,7 @@ where <span class="pl-k">=</span> {
 <span class="pl-c"># WHERE (((`id` = 5) OR (`id` = 10)) AND (`value` LIKE "Art%"))</span></pre></div>
 
 <h4>
-<a id="sql-functions-2" class="anchor" href="#sql-functions-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>SQL Functions</h4>
+<a id="sql-functions-2" class="anchor" href="#sql-functions-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SQL Functions</h4>
 
 <p>For all SQL functions, add a <code>#</code> before the column name and its value will not be quoted or escaped.</p>
 
@@ -588,7 +628,7 @@ where <span class="pl-k">=</span> {
 <hr>
 
 <h2>
-<a id="join-syntax" class="anchor" href="#join-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>JOIN Syntax</h2>
+<a id="join-syntax" class="anchor" href="#join-syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JOIN Syntax</h2>
 
 <p>DictMySQL provides simple symbolic syntax for joining tables.</p>
 
@@ -606,7 +646,7 @@ where <span class="pl-k">=</span> {
 </ul>
 
 <h4>
-<a id="examples-8" class="anchor" href="#examples-8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:</h4>
+<a id="examples-8" class="anchor" href="#examples-8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples:</h4>
 
 <div class="highlight highlight-source-python"><pre>mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
              <span class="pl-v">join</span><span class="pl-k">=</span>{
@@ -626,7 +666,7 @@ mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span cla
 <span class="pl-c"># INNER JOIN by default</span></pre></div>
 
 <h4>
-<a id="alias" class="anchor" href="#alias" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alias</h4>
+<a id="alias" class="anchor" href="#alias" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Alias</h4>
 
 <p>Both of the parameter table and join support alias.</p>
 
@@ -663,7 +703,7 @@ mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span cla
 <hr>
 
 <h2>
-<a id="reconnect" class="anchor" href="#reconnect" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reconnect</h2>
+<a id="reconnect" class="anchor" href="#reconnect" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reconnect</h2>
 
 <p>DictMySQL provides reconnect method allowing user to reconnect to MySQL manually.</p>
 
@@ -680,7 +720,7 @@ mysql.now()
 <hr>
 
 <h2>
-<a id="debug" class="anchor" href="#debug" aria-hidden="true"><span class="octicon octicon-link"></span></a>Debug</h2>
+<a id="debug" class="anchor" href="#debug" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Debug</h2>
 
 <p>By setting <code>DictMySQL.debug = True</code>, all the query methods excluding query() will return the SQL query without running it.</p>
 
