@@ -551,7 +551,7 @@ where <span class="pl-k">=</span> {
 <div class="highlight highlight-source-python"><pre><span class="pl-c"># Note that switching the position of $NOT and other operators might cause ambiguity. </span>
 <span class="pl-c"># It might reverse the whole operator chain or the single operator only, which will </span>
 <span class="pl-c"># be confusing since it can't be distinguished from the input JSON. So we define：</span>
-<span class="pl-c"># Reverse the logic operator - (not (A and B))</span>
+<span class="pl-c"># Reverse the logic operator, if $NOT is parent node and the related operator is child node, like: (not (A and B))</span>
 <span class="pl-c"># Example: </span>
 where <span class="pl-k">=</span> {
     <span class="pl-s"><span class="pl-pds">'</span>$NOT<span class="pl-pds">'</span></span>: {
@@ -572,7 +572,7 @@ where <span class="pl-k">=</span> {
 <span class="pl-c"># (`name` NOT LIKE 'David%') OR (`name` NOT LIKE '%Lee')</span>
 
 
-<span class="pl-c"># Keep the logic operator - ((not A) and (not B))</span>
+<span class="pl-c"># Keep the logic operator, if $NOT is child node and operator is parent node, like: ((not A) and (not B))</span>
 <span class="pl-c"># Example: </span>
 where <span class="pl-k">=</span> {
     <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>: {
