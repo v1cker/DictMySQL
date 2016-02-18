@@ -725,12 +725,12 @@ mysql.now()
 <h2>
 <a id="debug" class="anchor" href="#debug" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Debug</h2>
 
-<p>By setting <code>DictMySQL.debug = True</code>, all the query methods excluding query() will return the SQL query without running it.</p>
+<p>By setting <code>DictMySQL.debug = True</code>, all the query methods excluding query() will print the SQL query without running it. Under current version it will not print the quotation mark.</p>
 
 <div class="highlight highlight-source-python"><pre>mysql.debug <span class="pl-k">=</span> <span class="pl-c1">True</span>
 mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>jobs<span class="pl-pds">'</span></span>, 
              <span class="pl-v">where</span><span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>Artist<span class="pl-pds">'</span></span>})
-<span class="pl-c"># Output: 'SELECT * FROM `jobs` WHERE (`value` = "Artist");'</span></pre></div>
+<span class="pl-c"># Output: 'SELECT * FROM `jobs` WHERE (`value` = Artist);'</span></pre></div>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/ligyxy/DictMySQL">DictMySQL</a> is maintained by <a href="https://github.com/ligyxy">ligyxy</a>.</span>
