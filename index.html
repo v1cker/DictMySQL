@@ -551,8 +551,8 @@ where <span class="pl-k">=</span> {
 <div class="highlight highlight-source-python"><pre><span class="pl-c"># Note that switching the position of $NOT and other operators might cause ambiguity. </span>
 <span class="pl-c"># It might reverse the whole operator chain or the single operator only, which will </span>
 <span class="pl-c"># be confusing since it can't be distinguished from the input JSON. So we define：</span>
-<span class="pl-c"># Reverse the logic operator, if $NOT is parent node and the related operator is child node, like: (not (A and B))</span>
-<span class="pl-c"># Example: </span>
+<span class="pl-c"># Reverse the logic operator, if $NOT is parent node and the related operator is child node.</span>
+<span class="pl-c"># Example, (not (A and B)): </span>
 where <span class="pl-k">=</span> {
     <span class="pl-s"><span class="pl-pds">'</span>$NOT<span class="pl-pds">'</span></span>: {
         <span class="pl-s"><span class="pl-pds">'</span>$AND<span class="pl-pds">'</span></span>: [
@@ -572,8 +572,8 @@ where <span class="pl-k">=</span> {
 <span class="pl-c"># (`name` NOT LIKE 'David%') OR (`name` NOT LIKE '%Lee')</span>
 
 
-<span class="pl-c"># Keep the logic operator, if $NOT is child node and operator is parent node, like: ((not A) and (not B))</span>
-<span class="pl-c"># Example: </span>
+<span class="pl-c"># Keep the logic operator, if $NOT is child node and operator is parent node.</span>
+<span class="pl-c"># Example, ((not A) and (not B)): </span>
 where <span class="pl-k">=</span> {
     <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>: {
         <span class="pl-s"><span class="pl-pds">'</span>$AND<span class="pl-pds">'</span></span>: [
@@ -688,20 +688,20 @@ mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span cla
 <span class="pl-c"># FULL JOIN `profile_job` AS `pj` ON `j`.`id`=`pj`.`job_id`;</span>
 
 
-mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>profile_job<span class="pl-pds">'</span></span>,
+<span class="pl-c"># When performing self join, the joined table should be assigned different alias, </span>
+<span class="pl-c"># otherwise they will have the same key.</span>
+mysql.select(<span class="pl-v">table</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>profile_job(pj)<span class="pl-pds">'</span></span>,
              <span class="pl-v">join</span><span class="pl-k">=</span>{
-                 <span class="pl-s"><span class="pl-pds">'</span>profile_job(pj1)<span class="pl-pds">'</span></span>: {
-                     <span class="pl-s"><span class="pl-pds">'</span>pj.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>pj.id_2<span class="pl-pds">'</span></span>
-                 },
                  <span class="pl-s"><span class="pl-pds">'</span>profile_job(pj2)<span class="pl-pds">'</span></span>: {
-                     <span class="pl-s"><span class="pl-pds">'</span>pj.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>pj.id_3<span class="pl-pds">'</span></span>
+                     <span class="pl-s"><span class="pl-pds">'</span>pj.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>pj1.id_2<span class="pl-pds">'</span></span>
+                 },
+                 <span class="pl-s"><span class="pl-pds">'</span>profile_job(pj3)<span class="pl-pds">'</span></span>: {
+                     <span class="pl-s"><span class="pl-pds">'</span>pj.id<span class="pl-pds">'</span></span>: <span class="pl-s"><span class="pl-pds">'</span>pj2.id_3<span class="pl-pds">'</span></span>
                  }
              })
-<span class="pl-c"># SELECT * FROM `profile_job` </span>
-<span class="pl-c"># JOIN `profile_job` AS `pj2` ON `pj`.`id`=`pj`.`id_3` </span>
-<span class="pl-c"># JOIN `profile_job` AS `pj1` ON `pj`.`id`=`pj`.`id_2`;</span>
-<span class="pl-c"># When performing self join, the joined table should be assigned different alias, </span>
-<span class="pl-c"># otherwise they will have the same key.</span></pre></div>
+<span class="pl-c"># SELECT * FROM `profile_job` AS `pj` </span>
+<span class="pl-c"># JOIN `profile_job` AS `pj2` ON `pj`.`id`=`pj2`.`id_2` </span>
+<span class="pl-c"># JOIN `profile_job` AS `pj3` ON `pj`.`id`=`pj3`.`id_3`;</span></pre></div>
 
 <hr>
 
