@@ -563,7 +563,6 @@ mysql.select(table='profile_job(pj)',
 # JOIN `profile_job` AS `pj2` ON `pj`.`id`=`pj2`.`id_2` 
 # JOIN `profile_job` AS `pj3` ON `pj`.`id`=`pj3`.`id_3`;
 ```
-***
 
 
 
@@ -582,7 +581,7 @@ mysql.reconnect()
 mysql.now()
 # Works again
 ```
-***
+
 
 
 
