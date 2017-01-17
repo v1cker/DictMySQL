@@ -487,6 +487,7 @@ where = {
 
 #### SQL Functions
 For all SQL functions, add a `#` before the column name and its value will not be quoted or escaped.
+
 ```python
 where = {
     '#created': {
@@ -511,6 +512,7 @@ List of join types:
 - **><**: INNER JOIN
 
 #### Examples:
+
 ```python
 mysql.select(table='jobs', 
              join={
@@ -532,6 +534,7 @@ mysql.select(table='jobs',
 
 #### Alias
 Both of the parameter table and join support alias.
+
 ```python
 mysql.select(table='jobs(j)',
              columns=['j.value', 'p.value'],
@@ -546,7 +549,6 @@ mysql.select(table='jobs(j)',
 # SELECT `j`.`value`, `p`.`value` FROM `jobs` AS `j` 
 # FULL JOIN `profile` AS `p` ON `pj`.`profile_id`=`p`.`id` 
 # FULL JOIN `profile_job` AS `pj` ON `j`.`id`=`pj`.`job_id`;
-
 
 # When performing self join, the joined table should be assigned different alias, 
 # otherwise they will have the same key.
@@ -563,9 +565,11 @@ mysql.select(table='profile_job(pj)',
 # JOIN `profile_job` AS `pj2` ON `pj`.`id`=`pj2`.`id_2` 
 # JOIN `profile_job` AS `pj3` ON `pj`.`id`=`pj3`.`id_3`;
 ```
+***
 
 ## Reconnect
 DictMySQL provides reconnect method allowing user to reconnect to MySQL manually.
+
 ```python
 mysql = DictMySQL(db='occupation', 
                   host='127.0.0.1', 
@@ -577,9 +581,11 @@ mysql.reconnect()
 mysql.now()
 # Works again
 ```
+***
 
 ## Debug
 By setting `DictMySQL.debug = True`, all the query methods excluding query() will print the SQL query without running it. Under current version it will not print the quotation mark.
+
 ```python
 mysql.debug = True
 mysql.select(table='jobs', 
