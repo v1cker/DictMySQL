@@ -1,0 +1,8 @@
+title: DictMySQL
+description: A MySQL class for more convenient database manipulation with Python dictionary.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
