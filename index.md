@@ -46,7 +46,7 @@ See [JOIN Syntax](#join-syntax) for more details.
 - **where**: _dict, default None_   
 See [WHERE Syntax](#where-syntax) for more details.
 - **order**: _string, default None_   
-- **limit**: _int|list, default None_   
+- **limit**: _int\|list, default None_   
 
 #### Returns: 
 The result of SQL query.
