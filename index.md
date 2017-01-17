@@ -564,10 +564,6 @@ mysql.select(table='profile_job(pj)',
 # JOIN `profile_job` AS `pj3` ON `pj`.`id`=`pj3`.`id_3`;
 ```
 
-
-
-
-
 ## Reconnect
 DictMySQL provides reconnect method allowing user to reconnect to MySQL manually.
 ```python
@@ -581,10 +577,6 @@ mysql.reconnect()
 mysql.now()
 # Works again
 ```
-
-
-
-
 
 ## Debug
 By setting `DictMySQL.debug = True`, all the query methods excluding query() will print the SQL query without running it. Under current version it will not print the quotation mark.
