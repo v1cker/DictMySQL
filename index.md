@@ -82,6 +82,8 @@ mysql.select(table='jobs', columns=['#min(id)', 'value'], where={'value': {'$LIK
 ## get()
 A simplified method of select(), for getting one result in a single column. It can insert the condition as a new record when there is no result found. The result will not be wrapped in a tuple or dict, no matter which cursor is being used. A common case of using this method is fetching the unique id with given condition.
 
+It only outputs the first select query under debug mode, since it does not execute the query.
+
 #### Parameters:
 - **table**: _string_   
 - **column**: _string_  
@@ -153,7 +155,7 @@ Insert multiple values in one statement. SQL function is not supported in this m
 - **table**: _string_   
 - **columns**: _list_   
 Column names need to be specified when inserting multiple values.
-- **value**: _list|tuple_  
+- **value**: _list\|tuple_  
 - **ignore**: _bool, default False_   
 Add the IGNORE option into the insert statement.
 - **commit**: _bool, default True_   
@@ -264,7 +266,7 @@ Run customized SQL query. Just like PyMySQL and MySQLdb, use fetchall() or fetch
 
 #### Parameters:
 - **sql**: _string_   
-- **args**: _tuple|list, default None_
+- **args**: _tuple\|list, default None_
 
 #### Examples:
 ```python
