@@ -69,6 +69,7 @@ mysql.select(table='jobs',
 
 #### SQL Functions
 For all SQL functions, add a `#` before the column name or function name, and the value will not be quoted or escaped.
+
 ```python
 mysql.select(table='jobs', columns=['#min(id)', 'value'], where={'value': {'$LIKE': 'Art%'}})
 # SELECT min(id), `value` FROM `profile_job` WHERE (`value` LIKE Art%);
@@ -137,6 +138,7 @@ mysql.insert(table='jobs',
 
 #### SQL Functions
 For all SQL functions, add a `#` before the column name and its value will not be quoted or escaped.
+
 ```python
 mysql.insert(table='jobs', 
              value={'#UID': 'UUID()', 'value': 'Programmer'})
@@ -349,6 +351,7 @@ where = {
 # The default operator is "IN" if the end value is a list.
 ```
 List of operators:
+
 - **$=** or **$EQ**
 - **$<** or **$LT**
 - **$<=** or **$LTE**
@@ -506,6 +509,7 @@ where = {
 DictMySQL provides simple symbolic syntax for joining tables.
 
 List of join types:
+
 - **>**: LEFT JOIN
 - **<**: RIGHT JOIN
 - **<>**: FULL JOIN
