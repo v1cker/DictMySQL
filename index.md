@@ -298,6 +298,7 @@ mysql.now()
 
 ## last_insert_id()
 Fetching the id of last inserted row.
+
 ```python
 mysql.last_insert_id()
 # SELECT LAST_INSERT_ID() AS lid;;
@@ -364,7 +365,7 @@ List of operators:
 
 Operators are case-insensitive.
 
-#### Some More Examples:
+#### Some Quick Examples:
 ```python
 where = {
     'id': {
@@ -418,6 +419,7 @@ where = {
 # In the example above, $AND -> $OR and $< -> $>=.
 ```
 
+#### Some More Complex Examples:
 ```python
 # Note that switching the position of $NOT and other operators might cause ambiguity. 
 # It might reverse the whole operator chain or the single operator only, which will 
