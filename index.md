@@ -224,6 +224,14 @@ mysql.update(table='jobs',
              value={'value': 'Artist'},
              where={'id': 3})
 # UPDATE `jobs` SET `value` = "Artist" WHERE (`id` = 3);
+
+# Similar to SQL functions, add `#` when setting a column equal to another column:
+mysql.update(table='jobs(j)',
+             join={'profile_job(pj)': {'pj.job_id': 'j.id'}},
+             value={'#j.value': 'pj.job_value'},
+             where={'j.id': 3})
+# UPDATE `jobs` AS `j` JOIN `profile_job` AS `pj` ON `pj`.`job_id`=`j`.`id` SET `j`.`value` = pj.job_value WHERE (`j`.`id` = 3);"
+
 ```
 ***
 
