@@ -45,6 +45,7 @@ By default, it selects all columns.
 See [JOIN Syntax](#join-syntax) for more details.
 - **where**: _dict, default None_   
 See [WHERE Syntax](#where-syntax) for more details.
+- **group**: _string, default None_   
 - **order**: _string, default None_   
 - **limit**: _int\|list, default None_   
 
@@ -63,7 +64,7 @@ mysql.select(table='jobs',
              where={'jobs.value': 'Artist'},
              order='id DESC',
              limit=[2, 10])
-# SELECT * FROM `jobs` WHERE (`jobs`.`value` LIKE "Artist") ORDER BY `id` DESC LIMIT 2, 10;
+# SELECT * FROM `jobs` WHERE (`jobs`.`value` LIKE "Artist") ORDER BY id DESC LIMIT 2, 10;
 # Parameter limit not only accept int, but also list value if there is offset.
 ```
 
@@ -536,6 +537,22 @@ mysql.select(table='jobs',
              })
 # SELECT * FROM `jobs` JOIN `profile_job` ON `jobs`.`id`=`profile_job`.`job_id`;
 # INNER JOIN by default
+
+mysql.select(table='jobs', 
+             join={
+                 'profile_job': {
+                     'jobs.id': 'profile_job.job_id',
+                     'jobs.id': {'$>': 'profile_job.job_id'}
+                 },
+                 'company': {
+                     'jobs.id': 'company.job_id',
+                 }
+             })
+# SELECT * FROM `jobs` JOIN `profile_job` 
+# ON `jobs`.`id`=`profile_job`.`job_id` AND `jobs`.`id`>`profile_job`.`job_id` 
+# JOIN `company` ON `jobs`.`id`=`company`.`job_id`;
+# Similar to WHERE, the operator in JOIN could be <, <=, >, >=, <> and =
+# Join table on multiple conditions with AND
 ```
 
 #### Alias
