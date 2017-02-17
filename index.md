@@ -197,8 +197,7 @@ The last inserted id.
 ```python
 mysql.upsert(table='jobs', 
              value={'id': 5, 'value': 'Artist'})
-# INSERT INTO `jobs` (`id`, `value`) VALUES (5, Artist) 
-# ON DUPLICATE KEY UPDATE `id`=VALUES(`id`), `value`=VALUES(`value`);
+# INSERT INTO `jobs` (`id`, `value`) VALUES (5, Artist) ON DUPLICATE KEY UPDATE `id`=VALUES(`id`), `value`=VALUES(`value`);
 ```
 ***
 
@@ -548,11 +547,9 @@ mysql.select(table='jobs',
                      'jobs.id': 'company.job_id',
                  }
              })
-# SELECT * FROM `jobs` JOIN `profile_job` 
-# ON `jobs`.`id`=`profile_job`.`job_id` AND `jobs`.`id`>`profile_job`.`job_id` 
-# JOIN `company` ON `jobs`.`id`=`company`.`job_id`;
-# Similar to WHERE, the operator in JOIN could be <, <=, >, >=, <> and =
-# Join table on multiple conditions with AND
+# SELECT * FROM `jobs` JOIN `profile_job` ON `jobs`.`id`=`profile_job`.`job_id` AND `jobs`.`id`>`profile_job`.`job_id` JOIN `company` ON `jobs`.`id`=`company`.`job_id`;
+# Similar to WHERE, the operator in JOIN could be <, <=, >, >=, <> and =.
+# Tables could be joined on multiple conditions with AND.
 ```
 
 #### Alias
@@ -569,9 +566,7 @@ mysql.select(table='jobs(j)',
                      'pj.profile_id': 'p.id'
                  }
              })
-# SELECT `j`.`value`, `p`.`value` FROM `jobs` AS `j` 
-# FULL JOIN `profile` AS `p` ON `pj`.`profile_id`=`p`.`id` 
-# FULL JOIN `profile_job` AS `pj` ON `j`.`id`=`pj`.`job_id`;
+# SELECT `j`.`value`, `p`.`value` FROM `jobs` AS `j` FULL JOIN `profile` AS `p` ON `pj`.`profile_id`=`p`.`id` FULL JOIN `profile_job` AS `pj` ON `j`.`id`=`pj`.`job_id`;
 
 # When performing self join, the joined table should be assigned different alias, 
 # otherwise they will have the same key.
@@ -584,9 +579,7 @@ mysql.select(table='profile_job(pj)',
                      'pj.id': 'pj2.id_3'
                  }
              })
-# SELECT * FROM `profile_job` AS `pj` 
-# JOIN `profile_job` AS `pj2` ON `pj`.`id`=`pj2`.`id_2` 
-# JOIN `profile_job` AS `pj3` ON `pj`.`id`=`pj3`.`id_3`;
+# SELECT * FROM `profile_job` AS `pj` JOIN `profile_job` AS `pj2` ON `pj`.`id`=`pj2`.`id_2` JOIN `profile_job` AS `pj3` ON `pj`.`id`=`pj3`.`id_3`;
 ```
 ***
 
