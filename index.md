@@ -48,6 +48,8 @@ See [WHERE Syntax](#where-syntax) for more details.
 - **group**: _string, default None_   
 - **order**: _string, default None_   
 - **limit**: _int\|list, default None_   
+- **iterator**: _bool, default False_
+Whether to output the result in a generator
 
 #### Returns: 
 The result of SQL query.
