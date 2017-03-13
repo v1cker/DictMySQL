@@ -45,11 +45,14 @@ By default, it selects all columns.
 See [JOIN Syntax](#join-syntax) for more details.
 - **where**: _dict, default None_   
 See [WHERE Syntax](#where-syntax) for more details.
-- **group**: _string, default None_   
-- **order**: _string, default None_   
+- **group**: _string\|list, default None_
+- **having**: _string, default None_
+- **order**: _string\|list, default None_   
 - **limit**: _int\|list, default None_   
 - **iterator**: _bool, default False_
 Whether to output the result in a generator
+- **fetch**: _bool, default True_
+Whether to fetch the result. When False, it returns number of lines in result.
 
 #### Returns: 
 The result of SQL query.
