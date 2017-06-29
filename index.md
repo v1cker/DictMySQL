@@ -64,6 +64,9 @@ mysql.select(table='jobs',
 # SELECT * FROM `jobs` WHERE (`value` = "Artist");
 # Output: (5, )
 
+mysql.select(table='jobs', 
+             where={'value': None})
+# SELECT * FROM `jobs` WHERE (`value` IS NULL);
 
 mysql.select(table='jobs', 
              where={'jobs.value': 'Artist'},
